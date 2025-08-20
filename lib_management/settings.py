@@ -12,6 +12,8 @@ SECRET_KEY = 'django-insecure--0piltfbvtp3(q115$nen@tm1fdq1c9mgh#x*78-rji+9hewgp
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#Adding User model for authentication
+AUTH_USER_MODEL = 'users.User'
 
 ALLOWED_HOSTS = []
 
@@ -30,11 +32,12 @@ INSTALLED_APPS = [
     'books',
     'borrow',
     'members',
-    'status',
-    'users'
+    'users',
+    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -115,3 +118,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
